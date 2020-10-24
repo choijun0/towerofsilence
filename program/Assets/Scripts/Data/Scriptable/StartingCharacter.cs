@@ -8,16 +8,16 @@ public class StartingCharacter : ScriptableObject
 {
     public List<int> characterIndexList = new List<int>();
 
+#if UNITY_EDITOR
     [MenuItem("Scriptable/StartingCharacter/Create")]
     public static void Create()
     {
         var instance = ScriptableObject.CreateInstance<StartingCharacter>();
-        #if UNITY_EDITOR
         AssetDatabase.CreateAsset(instance, "Assets/Resources/Scriptable/StartingCharacter.asset");
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        #endif
     }
+#endif
 
     public static StartingCharacter Load()
     {

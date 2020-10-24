@@ -16,6 +16,7 @@ public class GameDataManager : ScriptableObject
     #region SavedData
     private const string SAVE_DATA_KEY = @"GameDataManager.SavedData";
 
+    [System.NonSerialized]
     public SaveData saveData = new SaveData();
     
     public int CurrentStage

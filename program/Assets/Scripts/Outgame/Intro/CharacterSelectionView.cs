@@ -6,11 +6,18 @@ public class CharacterSelectionView:MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtJob;
 
     [SerializeField] private List<CharacterSkillView> skillViewList;
+
+    [SerializeField] private GameObject[] characterArray;
     
     public int Index { get; set; }
 
     public void Set(int itemIndex,CharacterData characterData ,List<SkillData> skillList)
     {
+        for (int i = 0; i < characterArray.Length; ++i)
+        {
+            characterArray[i].SetActive(i == characterData.imageIndex);
+        }
+        
         Index = itemIndex;
         txtJob.text = characterData.job.ToString();
         

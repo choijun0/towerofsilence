@@ -14,6 +14,10 @@ public class IntroScene : MonoBehaviour
     [SerializeField] private GameObject introView;
     [SerializeField] private GameObject selectionView;
     [SerializeField] private GameObject stageView;
+
+    [SerializeField] private Image imgProgressBar;
+
+    private const float ORIGINAL_PROGRESSBAR_SIZE = 800F;
     
     private List<CharacterSelectionView> characterList = new List<CharacterSelectionView>();
 
@@ -38,6 +42,8 @@ public class IntroScene : MonoBehaviour
     public void OnClickResetButton()
     {
         PlayerPrefs.DeleteAll();
+        
+        GameDataManager.Instance.saveData = new GameDataManager.SaveData();
     }
 
     public void OnClickSelectCharacter(CharacterSelectionView selectionView)
@@ -108,9 +114,15 @@ public class IntroScene : MonoBehaviour
         {
             characterList[i].gameObject.SetActive(false);
         }
-        
-        while (true)
+
+        float progress = 0;
+//        var rectTransform = imgProgressBar.GetComponent<RectTransform>();
+//        var sizeDelta = rectTransform.sizeDelta;
+        while (progress < 1F)
         {
+            progress += 0.04F;
+//            sizeDelta.x = ORIGINAL_PROGRESSBAR_SIZE * progress;
+//            rectTransform.sizeDelta = sizeDelta;
             yield return null;
         }
     }

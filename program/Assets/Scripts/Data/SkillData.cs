@@ -9,7 +9,6 @@ public class SkillData
     public int Level { get; set; }
 }
 
-[System.Serializable]
 public enum EnumSkillType
 {
     Skill1,
